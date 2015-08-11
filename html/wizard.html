@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Open Circlez - Open up to new people around you</title>
+<meta name="description" content="Open Circlez is a unique way of discovering new people, through the activities and events happening around us. It is like socializing without a circle!" />
+<meta name="keywords" content="activity partner,meetup,friends,socialize,events" />
+<link href="css/custom-theme/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" >
+<link href="css/theme-extension.css" rel="stylesheet" type="text/css" >
+<link href="css/opencirclez.css" rel="stylesheet" type="text/css" >
+<link href="css/style_wizard.css" rel="stylesheet" type="text/css" >
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
+<script>
+if( !window.console )
+{ // dummy for console
+	window.console = { log: function() {}, error: function() {}, debug: function() {} };
+}
+var Framework = {
+	SITE_URL: 'http://'+window.location.host+'/',
+	REALM: window.location.hostname.split('.')[0],
+	SERVICE_URL: 'http://beta.open-circles.org/services/jsonp/',
+	SERVICE_GAE: 'http://'+window.location.host+'/',
+	User: {
+	}
+};
+</script>
+</head>
+<body>
+<div id="header" class="intro2" style="height: 85px">
+	<div class="oc-tagline">Open Up To Activities &amp; People near you</div>
+</div>
+<div id="add-about">
+	<div class="upper-logged-in"></div>
+	<div class="upper-signin"></div>
+	<div class="upper-about"></div>
+</div>
+<div id="local-users">
+</div>
+<div class="ui-body">
+	<div id="smartwizard" class="wiz-container">
+		<ul id="wizard-anchor">
+			<li><a href="#wizard-1"><h2>Step 1</h2>
+          <small>Create an activity</small></a></li>
+			<li><a href="#wizard-2"><h2>Step 2</h2>
+          <small>Choose a place & time</small></a></li>
+			<li><a href="#wizard-3"><h2>Step 3</h2>
+          <small>Open your circle</small></a></li>
+		</ul>
+		<div id="wizard-body" class="wiz-body">
+			<div id="wizard-1" >
+				<div class="wiz-content" id="wiz-content-1">
+				</div>
+				<div class="wiz-nav">
+				  <input class="next btn" id="next" type="button" value="Next >" />
+				</div>          
+			</div>
+			<div id="wizard-2">
+  			    <div class="wiz-content" id="wiz-content-2">
+                </div>
+			    <div class="wiz-nav">
+					<input class="back btn" id="back" type="button" value="< Back" />
+					<input class="next btn" id="create" type="button" value="Create >" />
+				</div>                        
+			</div>
+			<div id="wizard-3">
+				<div class="wiz-content" id="wiz-content-3">
+					<div id="circle-grow">
+						<h3>			
+							<a href="#">Invite friends &amp; people around you</a>
+						</h3>
+						<div id="invite-people">
+							<div id="users-around" style="height: 120px;"></div>
+							<div id="msg-holder"></div>
+						</div>
+						<h3>
+							<a href="#">Share with your social circle</a>
+						</h3>
+						<div id="other-people">
+							<!-- AddThis Button BEGIN -->
+							<div class="addthis_toolbox addthis_default_style ">
+							<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4d604700092402c3" class="addthis_button_compact">Share</a>
+							<span class="addthis_separator">|</span>
+							<a class="addthis_button_preferred_1"></a>
+							<a class="addthis_button_preferred_2"></a>
+							<a class="addthis_button_preferred_3"></a>
+							<a class="addthis_button_preferred_4"></a>
+							</div>
+							<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4d604700092402c3"></script>
+							<!-- AddThis Button END -->
+						</div>
+						<h3>
+							<a href="#">Share across social circles</a>
+						</h3>
+						<div id="across-circles">Craigslist/meetup/couchsurfing</div>
+					</div>
+				</div>
+				<div class="wiz-nav">
+					<input class="back btn" id="back" type="button" value="< Back" />
+					<input class="btn" id="done" type="button" value="Done" />
+				</div>             
+			</div>
+        </div>
+    </div>
+	<div id="auth_dialog"></div>	
+</div>
+<div id="fb-root"></div>
+<script type="text/javascript" src="js/compressed.js"></script>
+<script src="js/jqueryplugins/jquery.smart-wizard.js"></script>
+<!--
+<script type="text/javascript" src="js/jqueryplugins/jquery.editui.js"></script>
+<script type="text/javascript" src="js/jqueryplugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jqueryplugins/jquery.json-2.2.min.js"></script>
+<script type="text/javascript" src="js/Utils.js"></script>
+<script type="text/javascript" src="js/Constants.js"></script>
+<script type="text/javascript" src="js/Services.js"></script>
+<script type="text/javascript" src="js/Analytics.js"></script>
+<script type="text/javascript" src="js/Authentication.js"></script>
+<script type="text/javascript" src="js/Actions.js"></script>
+<script type="text/javascript" src="js/ActivityStore.js"></script>
+<script type="text/javascript" src="js/jqueryplugins/date.js"></script>
+-->
+<script type="text/javascript" src="js/wizard.js"></script>
+</body>
+</html>

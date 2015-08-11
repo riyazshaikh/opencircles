@@ -1,0 +1,9 @@
+<li class="user_profile">
+	<a class="user-holder">
+		<img title="<%=user.name%>" src="<%=user.pic%>"/><br/>
+		<i><%=jQuery.timeago(user.last_login)%></i>
+	</a>
+	<div class="user_stuff">
+		<span class="user_likes"><%=Framework.Utils.capitaliseFirstLetter(user.activities)%></span><br/>
+	</div>
+</li>

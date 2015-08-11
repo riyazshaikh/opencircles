@@ -1,0 +1,24 @@
+<%=message%>
+<br/>
+<br/>
+<b>@Location:</b> <%=address%>
+<br/>
+<% if( !timeless ) { %>
+<b>@Time:</b> <%=Framework.Utils.get_datetime_formatted_email(starttime)%>
+<% } %>
+<br/><br/>
+<%=description%>
+<br/><br/>
+<%=calltoaction%>
+<br/>
+<a target="_blank" href="<%=Framework.ActivityStore.getLinkToActivity(id)%>"><%=Framework.ActivityStore.getLinkToActivity(id)%></a>
+<br/>
+<br/>
+<hr/>
+<span style="font-size: 9pt;">
+<a href="http://www.OpenCirclez.com">OpenCirclez</a> - Share Happenings Across Circles. 
+<br/>
+You received this email because <b><%=Framework.User.name%></b> wants to share <b><%=Framework.Utils.capitaliseFirstLetter(tags)%></b> happenings with people located within <b><%=radius%></b> miles of <b><%=address%></b>.
+<br/><br/>
+<a href="<%=Framework.SITE_URL%>#signin=<%=emailto%>">Update preferences</a> to get more relevant info. To stop receiving emails, <a href="<%=Framework.SITE_URL%>#signout=<%=emailto%>">unsubscribe</a>
+</span>

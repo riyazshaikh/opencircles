@@ -1,0 +1,133 @@
+application: opencirclez-beta
+version: 1
+runtime: python
+api_version: 1
+
+builtins:
+- remote_api: on
+
+handlers:
+- url: /
+  static_files: index.html
+  upload: index.html
+
+- url: /index.html
+  static_files: index.html
+  upload: index.html
+
+- url: /test.html
+  static_files: test.html
+  upload: test.html
+  
+- url: /html/tmpl_listings.html
+  static_files: html/tmpl_listings.html
+  upload: html/
+
+- url: /html/tmpl_users.html
+  static_files: html/tmpl_users.html
+  upload: html/
+  
+- url: /html/tmpl_messages.html
+  static_files: html/tmpl_messages.html
+  upload: html/
+
+- url: /html/tmpl_email.html
+  static_files: html/tmpl_email.html
+  upload: html/
+  
+- url: /about/aboutus.html
+  static_files: html/about/aboutus.html
+  upload: html/about/
+  
+- url: /about/faq.html
+  static_files: html/about/faq.html
+  upload: html/about/
+
+- url: /about/help.html
+  static_files: html/about/help.html
+  upload: html/about/
+
+- url: /about/privacy.html
+  static_files: html/about/privacy.html
+  upload: html/about/
+
+- url: /about/terms.html
+  static_files: html/about/terms.html
+  upload: html/about/
+  
+- url: /post_activity
+  static_files: html/post_activity.html
+  upload: html/
+
+- url: /admin_activity
+  static_files: html/admin_activity.html
+  upload: html/
+
+- url: /wizard
+  static_files: html/wizard.html
+  upload: html/
+  
+- url: /js
+  static_dir: js/
+
+- url: /js/jqueryplugins
+  static_dir: js/jqueryplugins
+
+- url: /css
+  static_dir: css
+
+- url: /images
+  static_dir: images
+
+- url: /add
+  script: gateways/default.py
+
+- url: /search
+  script: gateways/default.py
+
+- url: /exists
+  script: gateways/default.py
+
+- url: /addmsg
+  script: gateways/default.py
+
+- url: /getmsgs
+  script: gateways/default.py
+  
+- url: /sendmsg
+  script: gateways/default.py
+
+- url: /getevent
+  script: gateways/default.py
+
+- url: /janrain
+  script: gateways/default.py
+
+- url: /getuser
+  script: gateways/default.py
+
+- url: /getusers
+  script: gateways/default.py
+  
+- url: /logout
+  script: gateways/default.py
+
+- url: /login
+  script: gateways/default.py
+
+- url: /updatelogin
+  script: gateways/default.py
+  
+- url: /resetpass
+  script: gateways/default.py
+
+- url: /anonysign
+  script: gateways/default.py
+
+- url: /img
+  script: gateways/default.py
+  
+- url: /(.*)
+  static_files: html/index.html
+  upload: html/(.*)
+

@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<title>Create An Activity</title>
+<head>
+<link href="/css/custom-theme/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" >
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+var Framework = {
+	SITE_URL: 'http://beta.opencirclez.com/',
+	TEMPLATE: 'post-activity',
+	SERVICE_URL: 'http://beta.open-circles.org/services/jsonp/',
+	SERVICE_GAE: 'http://beta.opencirclez.com/'
+};
+</script>
+<script type="text/javascript" src="/js/Utils.js"></script>
+<script type="text/javascript" src="/js/Analytics.js"></script>
+<script type="text/javascript" src="/js/Services.js"></script>
+<script type="text/javascript" src="/js/jqueryplugins/date.js"></script>
+<script type="text/javascript" src="/js/jqueryplugins/jquery.cookie.js"></script>
+
+</head>
+<body>
+<h2>Create New Activity</h2>
+	<form id='mainfrm' method='post'>
+	    <input type='hidden' name="eventid" value="" />
+		<table>
+			<tr style="display:none">
+				<td>Username</td>
+				<td><input type='text' size='80'  value='anonymous' name='user' class="ui-state-default ui-corner-all"/><button class="ui-state-default ui-corner-all" id="get_activities">Get</button></td>
+			</tr>
+			<tr>
+				<td>City</td>
+				<td>
+					<select name='city' class="ui-state-default ui-corner-all">
+						<option value="newyork" selected>New York</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Title*</td>
+				<td><input type='text' size='80'  value='' name='title' class="ui-state-default ui-corner-all"/></td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td><textarea name='desc' rows='3' cols='80' class="ui-state-default ui-corner-all"></textarea></td>
+			</tr>
+            <tr>
+                <td>Url for more info</td>
+                <td><input type='text' size='80'  value='' name='url' class="ui-state-default ui-corner-all"/></td>
+            </tr>
+			<tr>
+				<td>Address</td>
+				<td><input type='text' size='80'  name='address' value='' class="ui-state-default ui-corner-all" /></td>
+			</tr>
+            <tr>
+                <td>Day*</td>
+                <td><input type='text' size='20'  name='day' class="ui-state-default ui-corner-all" /></td>
+            </tr>
+
+			<tr>
+				<td>StartTime</td>
+				<td>
+					<select name='starttime' class="ui-state-default ui-corner-all">
+						<option value="0" selected>12am</option>
+						<option value="1" >1am</option>
+						<option value="2" >2am</option>
+						<option value="3" >3am</option>
+						<option value="4" >4am</option>
+						<option value="5" >5am</option>
+						<option value="6" >6am</option>
+						<option value="7" >7am</option>
+						<option value="8" >8am</option>
+						<option value="9" >9am</option>
+						<option value="10" >10am</option>
+						<option value="11" >11am</option>
+						<option value="12" >12pm</option>
+						<option value="13" >1pm</option>
+						<option value="14" >2pm</option>
+						<option value="15" >3pm</option>
+						<option value="16" >4pm</option>
+						<option value="17" >5pm</option>
+						<option value="18" >6pm</option>
+						<option value="19" >7pm</option>
+						<option value="20" >8pm</option>
+						<option value="21" >9pm</option>
+						<option value="22" >10pm</option>
+						<option value="23" >11pm</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>EndTime</td>
+				<td>
+					<select name='endtime' class="ui-state-default ui-corner-all">
+						<option value="0" selected>12am</option>
+						<option value="1" >1am</option>
+						<option value="2" >2am</option>
+						<option value="3" >3am</option>
+						<option value="4" >4am</option>
+						<option value="5" >5am</option>
+						<option value="6" >6am</option>
+						<option value="7" >7am</option>
+						<option value="8" >8am</option>
+						<option value="9" >9am</option>
+						<option value="10" >10am</option>
+						<option value="11" >11am</option>
+						<option value="12" >12pm</option>
+						<option value="13" >1pm</option>
+						<option value="14" >2pm</option>
+						<option value="15" >3pm</option>
+						<option value="16" >4pm</option>
+						<option value="17" >5pm</option>
+						<option value="18" >6pm</option>
+						<option value="19" >7pm</option>
+						<option value="20" >8pm</option>
+						<option value="21" >9pm</option>
+						<option value="22" >10pm</option>
+						<option value="23" >11pm</option>
+					</select>
+				</td>
+			</tr>
+
+            <tr>
+                <td>Cost</td>
+                <td><input type='text' size='20'  name='cost' class="ui-state-default ui-corner-all" /></td>
+            </tr>
+            <tr style="display:none">
+                <td>Quality</td>
+                <td><input type='text' size='20'  name='quality' class="ui-state-default ui-corner-all" value="10" /></td>
+            </tr>
+            
+			<tr>
+				<td><button class="ui-state-default ui-corner-all" onclick='doReset(); return false;'>Reset</button></td>
+				<td><button class="ui-state-default ui-corner-all" onclick='doASubmit(); return false;' id='btn_submit'>Add</button><span id="timezone"></span></td>
+			</tr>
+			<tr>
+				<td colspan="2"><div id='result' style='color: blue'></div>
+			</tr>
+		</table>
+	</form>
+	<!--
+	<br/>
+	<br/>
+	<br/>
+	<h3>Update Existing Activities</h3>
+	<div id='existing_ads'>
+	
+	</div>
+	-->
+<script type='text/javascript'>
+$(document).ready(function(){
+	doReset();
+});
+
+var allEntries = {};
+function addEntry(item)
+{
+	allEntries[item.id] = item;
+	if( jQuery('a#'+item.id).length )
+	{
+		jQuery('a#'+item.id).html(item.id + '&nbsp;'+item.title);
+	}
+	else
+	{
+		var anchor = $('<a href="#" class="old_ads" id="'+item.id+'">'+item.id+'&nbsp;'+item.title+'</a>');
+		$('#existing_ads').prepend('<br/>').prepend(anchor);
+		anchor.click(function(){
+			var entry = allEntries[item.id];
+			$('input[name="eventid"]').val(entry.id);
+			$('input[name="user"]').val(entry.owner);
+			$('input[name="title"]').val(entry.title);
+			$('textarea[name="desc"]').val(entry.description);
+			$("input[name='url']").val(entry.url);
+			$('input[name="address"]').val(entry.address);
+			$('input[name="cost"]').val(entry.cost);
+			$('input[name="quality"]').val(entry.quality);
+			// $('textarea[name="notes"]').val(entry.notes);
+			$('select[name="city"]').val(entry.city);
+			$('input[name="day"]').val((new Date(entry.starttime)).toString('M/d/yyyy'));
+			$('select[name="starttime"]').val((new Date(entry.starttime)).toString('H'));
+			$('select[name="endtime"]').val((new Date(entry.endtime)).toString('H'));
+			$('#btn_submit').html('Update');
+		});
+	}
+}
+
+function doReset()
+{
+	$("#mainfrm")[0].reset(); 
+	$("input[name='eventid']").val("");
+	$('#btn_submit').html('Add');
+	$('#result').html("");
+}
+
+function doASubmit()
+{
+	$('#result').html("");
+	if( !$("input[name='title']").val() || !$("input[name='day']").val() )
+	{
+		alert('Title and day is required');
+		return;
+	}
+	try {
+		var dayTimestamp = Date.parseExact($("input[name='day']").val(), 'M/d/yyyy').getTime();
+
+		var data = {};
+		data.id = $("input[name='eventid']").val();
+		data.url = $("input[name='url']").val();
+		data.title = $("input[name='title']").val();
+		data.description = $("textarea[name='desc']").val().replace(/\n/gim,"<br/>");
+		data.address = $("input[name='address']").val();
+		data.owner = $("input[name='user']").val();
+		data.starttime = dayTimestamp + parseInt($("select[name='starttime']").val()) *60*60*1000;
+		data.endtime = dayTimestamp + parseInt($("select[name='endtime']").val()) *60*60*1000;
+		if( data.endtime < data.starttime )
+			data.endtime += 24*60*60*1000; // end time should always be in future
+		data.city = $("select[name='city']").val();
+		data.cost = $("input[name='cost']").val();
+		// data.notes = $("textarea[name='notes']").val();
+		data.quality = isNaN(parseInt($("input[name='quality']").val())) ? 0 : parseInt($("input[name='quality']").val());
+		
+		if( data.url.length > 500 || data.title.length > 500 || data.address.length > 500 )
+		{
+			alert('Url, title, description, address must be less than 500 characters');
+			return;
+		}
+		
+		var add = function() {
+			$.ajax({ 	
+						url: "/add", 
+						data: data,
+						type: 'post',
+						success: function(response){
+							data.id = parseInt(response);
+							if( data.id )
+							{
+								$('#result').html('Success! Link to activity = <a href="'+Framework.SITE_URL+'#eventid='+data.id+'">'+Framework.SITE_URL+'#eventid='+data.id+'</a>');
+								addEntry(data);
+							}
+							else
+							{
+								$('#result').html('<span class="ui-state-error">There was a problem - ' + response + '</span>');
+							}
+						}
+			});
+		};
+		
+		// $('#btn_submit').attr("disabled", "true");
+		if( !data.id )
+		{
+			$.ajax({
+				url: "/exists",
+				data: { title: data.title, start: dayTimestamp },
+				type: 'get',
+				dataType: 'json',
+				success: function(response) {
+					if( response != 0 )
+					{
+						alert('Seems to be a duplicate of '+response.id + ' ' + response.title);
+					}
+					else
+					{
+						add();
+					}
+				}
+			});
+		}
+		else
+		{
+			add();
+		}
+	} catch(e) {
+		$('#result').html('<span class="ui-state-error">There was a problem - ' + e.toString() + '</span>');
+	}
+}
+
+// Get formatted current time
+function get_formatted_time( timestamp )
+{
+	var theTime;
+	if( timestamp )
+		theTime = new Date( timestamp );
+	else
+		theTime = new Date();
+	var hrs = theTime.getHours();
+	var mins = theTime.getMinutes();
+	var secs = theTime.getSeconds();
+	var month = theTime.getMonth() + 1;
+	var day = theTime.getDate();
+	if( month < 10 )
+	{
+		month = "0" + month;
+	}
+	if( day < 10 )
+	{
+		day = "0" + day;
+	}
+	if( mins < 10 ) mins = "0" + mins;
+	if( secs < 10 ) secs = "0" + secs;
+	return theTime.getFullYear() + "-" + month + "-" + day + " " + hrs + ":" + mins + ":" + secs;
+}
+
+// jQuery('#timezone').html((new Date()).toString());
+jQuery('input[name="day"]').datepicker();
+
+jQuery('#get_activities').click(function() {
+	var user = jQuery('input[name="user"]').val();
+	if( user != "" )
+	{
+		Framework.Services.get_events({ owner: user }, {
+			callback: function(response) {
+				allEntries = {};
+				jQuery('#existing_ads').html("");
+				for( var i=0; i<response.length; i++ )
+				{
+					addEntry(response[i]);
+				}
+			}
+		});
+	}
+	if( user == 'superuser' )
+	{
+		jQuery('input[name="quality"]').parents('tr').show();
+	}
+	return false;
+});
+
+/*
+jQuery('input[name="address"]').blur(function() {
+	Framework.Services.get_geocode_details($(this).val(), {
+		callback: function(response) {
+			jQuery('input[name="address"]').parent().append(response.latlong);
+		}
+	});
+}); */
+</script>	
+</body>
+</html>

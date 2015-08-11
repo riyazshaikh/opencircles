@@ -1,0 +1,788 @@
+
+.ui-body { margin: 0 auto; width: 760px; height: 100%; position: relative; margin-top: -122px; }
+#footer { margin-top: 45px; text-align:center; padding-right: 82px; color: rgb(238, 216, 174); }
+#footer a { margin-left: 10px; }
+sup, sub { font-size: 10pt; font-weight: normal; font-family: arial; }
+sub a { text-decoration: underline; color: blue; cursor: pointer; }
+#loader { position: absolute; top: 300px; left: 400px; width: 100px; height: 100px; display: none; }
+
+#editpanel { padding: 10px; }
+.ui-accordion-header { margin-top: 20px; }
+
+.ui-input-block { margin-top: 10px; margin-bottom: 15px; height: 3.0em;  font-weight: bolder; }
+.ui-input-block.postit { float: left; width: 250px; height: 250px; }
+.ui-input-block input.text, .ui-input-block select { height: 35px; width: 300px; font-size: 1em; font-weight: normal; border: 2px solid #79c9ec; }
+.ui-input-block.ui-short-fields input.text, .ui-input-block.ui-short-fields select { width: 150px; }
+.ui-input-block input[disabled], .ui-input-block select[disabled], .ui-input-block textarea[disabled], .ui-input-block .ui-selectmenu[disabled] { background-color: #999999; }
+.ui-input-block input.checkbox { height: 20px; width: 20px; margin-top: 10px; }
+.ui-input-block textarea { width: 345px; font-size: 14px; }
+.ui-optional { display: none; }
+div.label-container { display:block; float:left;width:35%; }
+.ui-edit-label { height: 1.4em; display:inline-block; text-align: right; padding-right: 10px; line-height: 1.8em; }
+.ui-edit-help { margin-top: 2px; font-size: 8pt; color: #444444; font-weight: bolder; text-align: left; float: left; width: 100%; }
+.ui-edit-help span { padding-left: 20%; }
+.ui-edit-help a { text-decoration: underline; color: blue; cursor: pointer; }
+.ui-edit-input { display:block; width: 64%; text-align: left; float: left; }
+.ui-more { text-align: right; font-size: 0.6em; color: blue; cursor: pointer; }
+.ui-clickable { cursor: pointer; text-decoration: underline; }
+.ui-hint-text { color: #222222; }
+.ui-result { color: red; }
+.ui-slider { float: left; width: 250px; }
+.slider-output { width: 135px;}
+.floater-left { float: left; }
+.floater-right { float: right; }
+.btn_holder { height: 60px; padding-top: 16px; width: 32%; }
+
+.ui-priority-primary { 
+	background: #1de23b url(custom-theme/images/ui-button.png) 50% 50% repeat-x; 
+	font-weight: bolder; 
+	color: #212121; 
+	border: 1px solid #6CA5AE;
+	font-size: 20px;
+	font-family: 'Puritan', arial, serif;	
+}
+
+#extras_holder { height: 120px; }
+#primary_holder { height: 60px; width: 100%; }
+#activity_holder, #loc_date_holder { width: 485px; }
+#time_holder, #radius_holder { width: 250px; }
+#time_holder *, #radius_holder * { font-size: 0.8em; }
+#secondary-content { margin-top: 200px; }
+#showmore { display: none; width: 100%; height: 30px; text-align: center; cursor: pointer; margin-top: 10px; }
+
+
+/*++++Global
+++++++++++++++++++++++++++++++++++++++*/
+
+* {
+	margin:0;
+	padding:0;
+	font-family:Helvetica, Arial, sans-serif;
+	text-decoration:none;
+}
+
+body {
+	background:#a2f1ff;
+	border-top:10px solid #054e57;
+}
+
+#header {
+	background: url(../images/header-intro2-fb.png) no-repeat center top;
+	height:145px;
+	position: relative;
+	z-index: 2;
+}
+
+.oc-tagline {
+	position:absolute;
+	left:42%;
+	top:29px;
+	font: normal 28px/1.2 Helvetica, Arial, sans-serif;
+	color:#054e57;
+}
+#my-likes {
+	display: none;
+	position: absolute;
+	left:42%;
+	color: #054e57;
+}
+#my-likes label {
+	font-weight: bolder;
+}
+#my-likes .activity {
+    position: relative;
+    display: block;
+    float: left;
+    height: 20px;
+    margin-top: 5px;
+    padding: 0.3em;
+    text-align: center;
+    width: 100px;
+	overflow: hidden;
+}
+#my-likes .activity a{ 
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+#add-about {
+	height:19px;
+	position:absolute;
+	top:10px;
+	left:59%;
+	z-index: 3;
+}
+
+#add-about a {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.upper-logged-in {
+	float: left;
+	height: 19px;
+	width: 120px;
+	margin-right: 5px;
+}
+.fb-login {
+	display: inline-block;
+	background:url(../images/opencirclez-sprite.png) no-repeat -377px -106px;
+	width:20px;
+	height:20px;
+}
+.upper-signin {
+	background:url(../images/opencirclez-sprite.png) no-repeat -244px 0px;
+	width:57px;
+	height:19px;
+	float:left;
+}
+.upper-signout {
+	width:63px;
+	height:19px;
+	float:left;
+	background:url(../images/opencirclez-sprite.png) no-repeat -244px -38px;
+	text-indent:-9999px;
+}
+.upper-signin:hover {
+	background:url(../images/opencirclez-sprite.png) no-repeat -244px -19px;
+}
+
+.upper-signout:hover {
+	background:url(../images/opencirclez-sprite.png) no-repeat -308px -38px;
+}
+
+.upper-about {
+	background:url(../images/opencirclez-sprite.png) no-repeat -310px 0px;
+	width:67px;
+	height:19px;
+	float:left;
+}
+
+.upper-about:hover {
+	background:url(../images/opencirclez-sprite.png) no-repeat -310px -19px;
+}
+
+a {
+	outline:none;
+	color:#054e57;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+.ui-corner-all {
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+
+.floater-left {
+    float: left;
+}
+
+/*++++Search Box
+++++++++++++++++++++++++++++++++++++++*/
+
+
+#search-box , #location-box {
+	background:url(../images/search-form-top.png) no-repeat center 33px;
+	border:none;
+	font-weight:normal;
+	color:#054e57;
+	margin-bottom:20px;
+	position:relative;	
+}
+
+#search-box {
+	background:url(../images/search-form-top-intro2.png) no-repeat center top;
+}
+
+#location-box {
+	background:url(../images/search-form-top-intro1.png) no-repeat center top;
+}
+
+#search-form , #location-form{
+	padding:163px 0 0 0px;	
+}
+
+.create-btn {
+	height:34px;
+	width:198px;
+	background:url(../images/opencirclez-sprite.png) no-repeat -230px 0;
+}
+
+.create-btn:hover {
+	height:34px;
+	width:198px;
+	background:url(../images/opencirclez-sprite.png) no-repeat -230px -34px;
+}
+
+.suggestions {
+	font: normal 14px/1.2 Helvetica, Arial, sans-serif;
+	overflow:hidden;
+	width:425px;
+	margin:5px 0 0 38px;
+	color:#054e57;
+}
+
+.suggestions a {
+	color:#054e57;
+	text-decoration:none;
+	padding-right:10px;
+	cursor: pointer;
+}
+
+.suggestions a:hover {
+	text-decoration:underline;
+}
+
+.search-inner {
+	background:url(../images/search-form-tile.png) center bottom repeat-y;
+	width:760px;
+	min-height:25px;
+}
+
+.bottomcap {
+	width:760px;
+	height:25px;
+	background:url(../images/search-form-bottom.png) center bottom no-repeat;
+}
+
+/*++++Forms
+++++++++++++++++++++++++++++++++++++++*/
+
+input:focus {
+	outline: 0;
+	-moz-appearance:none;
+}
+
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border:none;
+	outline:none;
+}
+
+.main-search {
+	border:none;
+	width:506px;
+	height:48px;
+	background:transparent;
+	padding:3px;
+	font: normal 30px/45px Helvetica, Arial, sans-serif;
+    border:none;
+    background:none;
+	color:#5f8e94;
+	margin-left:42px;
+}
+
+.submit-btn {
+	width:138px;
+	position:absolute;
+	top:163px;
+	left:580px;
+}
+
+.submit-btn input {
+	background:url(../images/opencirclez-sprite.png) no-repeat 0px -73px;
+	cursor:pointer;
+	width:138px;
+	height:53px;
+	border:none;
+}
+
+.submit-btn input:hover {
+	background:url(../images/opencirclez-sprite.png) no-repeat -138px -73px;
+}
+
+a.start-own-btn {
+	font-size:12px;
+	height:20px;
+	display:block;
+	position:absolute;
+	top:220px;
+	left:581px;
+	z-index:99;
+	cursor: pointer;
+}
+
+a.geolocate-btn {
+	font-size:12px;
+	width:96px;
+	height:20px;
+	display:block;
+	background:url(../images/opencirclez-sprite.png) no-repeat -116px -240px;
+}
+
+a.geolocate-btn:hover {
+	background-position: -116px -260px;
+}
+
+#extras_holder {
+	width:760px;
+	padding:20px 0 0 0;
+}
+
+#footer {
+	font-size:14px;
+	clear:both;
+}
+
+.ui-input-block input.text, .ui-input-block select {	
+	border: 1px solid #828282;
+}
+
+.ui-input-block input.text, .ui-input-block select {
+	font:16px/1.2 Helvetica, Arial, sans-serif;
+	height: 25px;
+    width: 345px;
+	color:#5f8e94;
+	padding:3px;	
+}
+
+.ui-edit-label {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.2em;
+    padding-right: 7px;
+    text-align: right;
+}
+
+div.label-container {
+    display: block;
+    float: left;
+    font-weight: normal;
+    text-align: right;
+    width: 20%;
+	padding-top:7px;
+}
+
+#activity_holder, #loc_date_holder {
+    width: 465px;
+}
+
+#activity_holder, #loc_date_holder {
+    width: 465px;
+}
+
+.ui-widget-header {
+	background: none;
+    border: 1px solid #AAAAAA;
+    color: #054E57;
+    font-weight: normal;
+} 
+	
+.ui-widget-header .ui-icon {
+	background-image: url(custom-theme/images/ui-icons_888888_256x240.png);
+}
+
+.ui-widget-header .ui-icon:hover {
+	background-image: url(custom-theme/images/ui-icons_888888_256x240.png);
+}
+
+.ui-input-block, #time_holder *, #radius_holder * {
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.ui-datepicker .ui-datepicker-title select {
+    font-size: 14px;
+    margin: 1px 0;
+	color: #054E57;
+}
+
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+    height: 20px;
+    position: absolute;
+    top: 4px;
+    width: 20px;
+}
+
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover {
+	top: 3px;
+}
+
+/*+++++++Activity Listings
++++++++++++++++++++++++++++++*/
+
+.location, .description {
+	margin:20px 0;
+	clear:both;
+}
+
+#edit_prompt {
+	display: inline-block;
+	color:#054e57;
+	font-size:22px;
+	line-height:33px;
+	padding:6px;
+	font-weight:normal;
+	cursor: pointer;
+	width: 75%;
+}
+
+.ui-accordion .ui-accordion-content-active {
+	border-top:none;
+	border-left: 1px solid #054e57;
+	border-right: 1px solid #054e57;
+	border-bottom: 1px solid #054e57;
+}
+
+.ui-accordion {
+	font-size:14px;
+	line-height:18px;
+}
+
+.accordion-titles, b, em {
+	color:#054e57;
+	font-weight:bold;
+}
+
+.ui-accordion-header {
+	margin-top:6px !important;
+}
+.ui-accordion .ui-accordion-header a {
+	display: inline-block;
+	width: 100%;
+}
+#list_activities {
+	padding:3px 9px 9px 9px;
+	margin:3px;
+	background:#ffffff;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	display: none;
+}
+.list_item_image {
+	float: left;
+	display: block;
+	margin: 10px;
+}
+.list_item_image img {
+	height: 32.2px;
+	width: 50px;
+}
+.list_item_header {
+	list-style-type: none;
+	color: #054E57;
+	float:left;
+	width: 85%;
+}
+.list_item_header .name {
+	float: left;
+	width: 100%;
+	overflow: hidden;
+	height: 20px;
+	margin: 5px;
+}
+.list_item_header .datetime {
+	float: left;
+	width: 15%;
+	padding-left: 10px;
+}
+.list_item_header .distance {
+	float: right;
+	width: 15%;
+	padding-left: 10px;
+	font-style: italic;
+}
+.list_item_header .persons {
+	float: right;
+	display: none;
+}
+.list_item_header .persons.show {
+	display: block;
+	/* background:url(../images/opencirclez-sprite.png) no-repeat -280px -92px; */
+}
+.list_item .edit_event {
+	float: left;
+	display: none;
+	cursor: pointer;
+}
+.list_item .edit_event.show {
+	display: block;
+}
+
+.list_item .user_comments {
+	/* How to make a box around all the comments? */
+}
+.user_profile {
+	float: left;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 10px;
+	padding:0 0 10px 0;
+	width:100%;
+}
+
+.user_stuff {
+	margin-left:70px;
+	text-align: left;
+}
+
+.user_profile img {
+	border:1px solid transparent;
+	width:60px;
+	height:60px;
+}
+
+.user_profile img:hover {
+	border: 1px solid #054E57;
+}
+
+.list_item .user_message {
+	float: left;
+}
+#activity_loader { 
+	text-align: center;
+	display: none;
+}
+
+.discover-new {
+	/* background:url(../images/opencirclez-sprite.png) no-repeat 0px -129px; */
+	cursor:pointer;
+	width:140px;
+	border:none;
+	font-size:12px !important;
+	font-weight:normal;
+	border: 1px solid #003137;
+}
+input.start-own {
+	font-size:12px !important;
+	font-weight:normal;
+	border: 1px solid #003137;
+}
+.tell-friend {
+	float: right;
+	margin-top:6px;
+}
+
+.cue-buttons {
+	text-align: center;
+	font-size: 11px;
+	float: right;
+}
+
+.cue-buttons button, .cue-buttons a {
+	margin:0;
+	padding:0;
+}
+
+.ui-icon.ui-icon-triangle-1-e {
+    background: url("../images/opencirclez-sprite.png")  -283px -114px transparent;
+    height: 12px;
+    width: 12px;
+}
+
+.ui-icon.ui-icon-triangle-1-s {
+	background: url("../images/opencirclez-sprite.png")  -298px -114px transparent;
+    height: 12px;
+    width: 12px;
+}
+
+.all-activities {
+	background: #ffffff;
+    border: 1px solid #D3D3D3;
+    color: #054E57;
+    font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	padding:10px 0 0 0;
+}
+
+#activity_loader {
+	margin:10px 0;
+}
+
+.persons {
+	width:19px;
+	height:23px;
+	background:url(../images/opencirclez-sprite.png) no-repeat -376px -71px;
+}
+
+.ui-widget-content a {
+	color: #054E57;
+}
+
+.calendar-box {
+	width:27px;
+	height:17px;
+	background:url(../images/opencirclez-sprite.png) no-repeat;
+	text-align:center;
+	font-size:14px;
+	color:#444444;
+	padding-top:10px;
+}
+
+.sun {
+	background-position:0 -195px;
+}
+
+.mon {
+	background-position:-28px -195px;
+}
+
+.tue {
+	background-position:-56px -195px;
+}
+
+.wed {
+	background-position:-84px -195px;
+}
+
+.thu {
+	background-position:-112px -195px;
+}
+
+.fri {
+	background-position:-140px -195px;
+}
+
+.sat {
+	background-position:-168px -195px;
+}
+
+.calendar-container {
+	float:left;
+	margin-top:-3px;
+}
+
+.ui-widget-content {
+    color: #5F8393 !important;
+}
+
+.meet-new-arrow {
+	width:114px;
+	height:45px;
+	position:absolute;
+	top:1px;
+	left:440px;
+	background:url(../images/opencirclez-sprite.png) -200px -193px no-repeat;
+}
+
+.x-btn {
+	margin-left:3px;
+	height:15px;
+	width:16px;
+	background:url(../images/opencirclez-sprite.png) -312px -113px no-repeat;
+	display:inline-block;
+}
+
+.x-btn a, .message-me a {
+	width:100%;
+	height:100%;
+	display:block;
+}
+
+.x-btn:hover {
+	background-position: -329px -113px
+}
+	
+.message-me {
+	width:104px;
+	height:20px;
+	background:url(../images/opencirclez-sprite.png) -213px -240px no-repeat;
+	clear:both;
+}
+
+.message-me:hover {
+	background-position: -213px -260px;
+}
+	
+#geolocate, #sortby { display: none; }	
+
+.use_profile { float: right; padding: 5px; }
+
+#local-users { 
+	list-style-type: none;
+	position: relative; 
+	padding-top: 20px;
+	z-index: 10; 
+	margin: 0 auto;
+	text-align: center;
+}
+.users-list {
+	list-style-type: none;
+	margin-top: 20px;
+}
+.user-holder { 
+	float: left; 
+	width: 120px; 
+	height: 90px; 
+	display: block; 
+	text-decoration: none;
+	text-align:center;
+}
+a.user-holder:hover {
+	text-decoration: none;
+}
+.user-holder img {
+	width: 60px;
+	height: 60px;
+}
+.user-activities {
+	margin-top: -150px;
+	position: relative;
+	width: 200px;
+}
+
+.call-to-action  {
+	display: none;
+	position: relative; 
+	text-align: center;
+	z-index: 9;
+	font-size: 20px;
+}	
+.call-to-action a, #local-users .location {
+	font-style: italic;
+	cursor: pointer;
+	text-decoration: underline;
+	font-weight: normal;
+	margin-left: 5px;
+}
+.call-to-action.start-circle {
+	margin-top: -63px;
+	margin-bottom: 22px;
+}
+.editme {
+	text-decoration: underline;
+	font-style: italic;
+	cursor: pointer;
+}
+
+.uploader-img { width: 50px; height: 50px; }
+.qq-uploader { position:relative; width: 100%;}
+
+.qq-upload-button {
+    display:block; /* or inline-block */
+    width: 105px; padding: 7px 0; text-align:center;    
+    background:#880000; border-bottom:1px solid #ddd;color:#fff;
+}
+.qq-upload-button-hover {background:#cc0000;}
+.qq-upload-button-focus {outline:1px dotted black;}
+
+.qq-upload-drop-area {
+    position:absolute; top:0; left:0; width:100%; height:100%; min-height: 70px; z-index:2;
+    background:#FF9797; text-align:center; 
+}
+.qq-upload-drop-area span {
+    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
+}
+.qq-upload-drop-area-active {background:#FF7171;}
+
+.qq-upload-list {margin:15px 35px; padding:0; list-style:disc;}
+.qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
+.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
+    margin-right: 7px;
+}
+
+.qq-upload-file {}
+.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
+.qq-upload-size,.qq-upload-cancel {font-size:11px;}
+
+.qq-upload-failed-text {display:none;}
+.qq-upload-fail .qq-upload-failed-text {display:inline;}
+
