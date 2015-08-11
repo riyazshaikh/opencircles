@@ -1,5 +1,7 @@
 # OpenCirclez - Explore local events with a wider social circle
 
+Live demo here - http://opencircles-dev.appspot.com/
+
 A geolocation based activity aggregator that uses Meetup API to provide initial activities. Provides reverse geocoding capabilities using Google Maps API.
 
 # Environment Setup:
