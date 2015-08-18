@@ -93,13 +93,13 @@ Framework.ActivityStore = {
 				}); 
 			}*/
 			
-			reqCntr++;
-			this.getMeetupResults({ lon: longitude, lat: latitude, radius: filters.radius, time: filters.time, text: jQuery.trim(filters.activity.replace(/,/gim, ' '))}, {
-				keywords: keywords,
-				callback: function() {
-					reduceNCheck();
-				}
-			});
+			// reqCntr++;
+			// this.getMeetupResults({ lon: longitude, lat: latitude, radius: filters.radius, time: filters.time, text: jQuery.trim(filters.activity.replace(/,/gim, ' '))}, {
+			// 	keywords: keywords,
+			// 	callback: function() {
+			// 		reduceNCheck();
+			// 	}
+			// });
 		}
 		/*
 		this.getCraigslistResults({ text: filters.activity }, {

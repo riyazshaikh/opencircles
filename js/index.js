@@ -171,7 +171,7 @@ var moreClick = function(bEnable) {
 	if( !bEnable && jQuery('.ui-optional').is(':visible') )
 	{
 		// jQuery(this).html('More Options &gt;&gt;');
-		jQuery('.ui-optional').slideUp(1000);
+		// jQuery('.ui-optional').slideUp(1000);
 	}
 	else if( bEnable && !jQuery('.ui-optional').is(':visible') )
 	{

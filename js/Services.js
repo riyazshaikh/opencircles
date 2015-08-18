@@ -92,26 +92,30 @@ Framework.Services = {
 	// Returns obj of City, CountryCode, CountryName, Latitude, Longitude, ZipPostalCode to options.callback
 	get_geocode: function(options)
 	{
-		this.makeJsonpCall( Framework.SERVICE_URL + 'geolocation/geobytes', {
-			callback: function(response) {
-				var geocode = {};
-				if(!response)
-				{
-					geocode = Framework.Services.defaultGeocode;
-				}
-				else
-				{
-					geocode.zipcode = "";
-					geocode.area = response.region || response.city;
-					geocode.city = response.city;
-					geocode.state = response.regioncode;
-					geocode.country = response.country;
-					geocode.latlong = response.latitude + ',' + response.longitude;
-					Framework.Services.defaultGeocode = geocode;
-				}
-				options.callback(geocode);
-			}
-		});
+
+		setTimeout(function() {
+			options.callback(Framework.Services.defaultGeocode);
+		}, 100);
+		// this.makeJsonpCall( Framework.SERVICE_URL + 'geolocation/geobytes', {
+		// 	callback: function(response) {
+		// 		var geocode = {};
+		// 		if(!response)
+		// 		{
+		// 			geocode = Framework.Services.defaultGeocode;
+		// 		}
+		// 		else
+		// 		{
+		// 			geocode.zipcode = "";
+		// 			geocode.area = response.region || response.city;
+		// 			geocode.city = response.city;
+		// 			geocode.state = response.regioncode;
+		// 			geocode.country = response.country;
+		// 			geocode.latlong = response.latitude + ',' + response.longitude;
+		// 			Framework.Services.defaultGeocode = geocode;
+		// 		}
+		// 		options.callback(geocode);
+		// 	}
+		// });
 		/* var query = "SELECT * from ip.location where ip='"+ipaddr+"'";
 		this.makeYqlCall(query, { 
 			callback: function(response) { 
@@ -135,11 +139,11 @@ Framework.Services = {
 
 	get_geocode_details: function(addr, options)
 	{
-		if( !addr )
-		{
+		// if( !addr )
+		// {
 			options.callback(this.defaultGeocode);
 			return;
-		}
+//		}
 		var callback = function(response) { 
 			var geocode = {};
 			geocode.zipcode = Framework.Utils.findProperty('PostalCodeNumber',response) || '';

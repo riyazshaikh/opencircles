@@ -24,7 +24,7 @@ div.label-container { display:block; float:left;width:35%; }
 .ui-edit-help a { text-decoration: underline; color: blue; cursor: pointer; }
 .ui-edit-input { display:block; width: 64%; text-align: left; float: left; }
 .ui-more { text-align: right; font-size: 0.6em; color: blue; cursor: pointer; }
-.ui-clickable { cursor: pointer; text-decoration: underline; }
+.ui-clickable { cursor: pointer; /*text-decoration: underline;*/ }
 .ui-hint-text { color: #222222; }
 .ui-result { color: red; }
 .ui-slider { float: left; width: 250px; }
@@ -371,7 +371,7 @@ div.label-container {
 
 .ui-widget-header {
 	background: none;
-    border: 1px solid #AAAAAA;
+    border: none;
     color: #054E57;
     font-weight: normal;
 } 
