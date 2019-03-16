@@ -37,7 +37,6 @@ For starters, look at app.yaml to know which urls are mapped to which files.
 - Javascript compressing is done server side by yuicompressor
 
 
-![Busking Promotion]
-(https://github.com/riyazshaikh/opencirclez/raw/master/images/135938_946902377915_553034_o.jpg)
+![Busking Promotion](https://github.com/riyazshaikh/opencirclez/raw/master/images/135938_946902377915_553034_o.jpg)
 
 
